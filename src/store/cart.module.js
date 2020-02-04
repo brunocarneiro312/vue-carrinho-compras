@@ -9,10 +9,19 @@ export const cartModule = {
         items: [],
     },
     mutations: {
+
+        // Altera o conteúdo do carrinho
         setCart(state, cart) {
             if (cart)
                 cart.forEach(item => state.items.push(item));
         },
+
+        // Obtém carrinho do localStorage
+        getCart(state) {
+            state.items = JSON.parse(window.localStorage.getItem('cart'))
+        },
+
+        // Adiciona item ao carrinho
         addItem(state, item) {
             state.items.push(item);
             window.localStorage.setItem('cart', JSON.stringify(state.items));
@@ -23,6 +32,15 @@ export const cartModule = {
             context.commit('setCart', cart);
         },
         addItem(context, item) {
+            // Primeiro temos que verificar se ainda existem itens no estoque
+            if (item.estoque <= 0) {
+                return; // lançar uma exceção
+            }
+
+            // Caso tenha, temos que decrementar o estoque
+            item.estoque--;
+
+            // Em seguida vamos comitar a alteração de estado
             context.commit('addItem', item);
         }
     },
