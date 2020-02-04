@@ -10,7 +10,8 @@ export const cartModule = {
     },
     mutations: {
         setCart(state, cart) {
-            cart.forEach(item => state.items.push(item));
+            if (cart)
+                cart.forEach(item => state.items.push(item));
         },
         addItem(state, item) {
             state.items.push(item);

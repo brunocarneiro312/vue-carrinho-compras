@@ -90,6 +90,8 @@
                     return 'orange--text';
                 return 'green--text'
             }
+        },
+        created() {
         }
     }
 </script>

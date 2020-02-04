@@ -24,6 +24,9 @@
             total() {
                 return this.$store.getters.total;
             }
+        },
+        created() {
+            this.$store.dispatch('setCart', JSON.parse(window.localStorage.getItem('cart')))
         }
     }
 </script>
