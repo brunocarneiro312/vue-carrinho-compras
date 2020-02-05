@@ -2,7 +2,15 @@
     <div>
         <v-hover>
             <template v-slot:default="{ hover }">
-                <v-card tile>
+                <v-card :elevation="hover ? 10 : 5">
+                    <div class="teste text-center">
+                        <div>
+                            {{ estoque }}
+                        </div>
+                        <div>
+                            Em estoque
+                        </div>
+                    </div>
                     <v-img :src="urlImg"
                            style="background-size: cover">
                         <v-fade-transition>
@@ -10,7 +18,9 @@
                                        absolute
                                        opacity=".7"
                                        color="#036358">
-                                <v-btn tile>Detalhes</v-btn>
+                                <v-btn tile>
+                                    Detalhes
+                                </v-btn>
                             </v-overlay>
                         </v-fade-transition>
                     </v-img>
@@ -62,10 +72,30 @@
             summary: String,
             estoque: Number,
             price: Number
+        },
+        data: function() {
+            return {
+
+            }
         }
     }
 </script>
 
 <style scoped>
-
+    .v-sheet--offset {
+        top: -24px;
+        position: relative;
+    }
+    .teste {
+        position:absolute;
+        background: rgba(0, 0, 0, .7);
+        color: white;
+        padding: 5px 15px;
+        z-index: 9999;
+        border-radius: 5px;
+        top: -15px;
+        right: 10px;
+        display: inline;
+        font-size: 0.8em;
+    }
 </style>
