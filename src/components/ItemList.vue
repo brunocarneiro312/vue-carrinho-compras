@@ -17,7 +17,7 @@
                 <td :class="estoqueColorClass(item.estoque)">{{ item.estoque }}</td>
                 <td>R${{ item.price }}</td>
                 <td>
-                    <v-btn text @click="addItem(item)" color="primary" x-small>
+                    <v-btn text @click="addItem(item)" color="primary" small>
                         <v-icon>mdi-cart-plus</v-icon>
                         Adicionar
                     </v-btn>

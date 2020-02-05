@@ -12,8 +12,9 @@ export const cartModule = {
 
         // Altera o conteúdo do carrinho
         setCart(state, cart) {
-            if (cart)
+            if (cart) {
                 cart.forEach(item => state.items.push(item));
+            }
         },
 
         // Obtém carrinho do localStorage
@@ -28,27 +29,29 @@ export const cartModule = {
         }
     },
     actions: {
+
         setCart(context, cart) {
             context.commit('setCart', cart);
         },
+
         addItem(context, item) {
+
             // Primeiro temos que verificar se ainda existem itens no estoque
             if (item.estoque <= 0) {
                 return; // lançar uma exceção
             }
-
-            // Caso tenha, temos que decrementar o estoque
-            item.estoque--;
 
             // Em seguida vamos comitar a alteração de estado
             context.commit('addItem', item);
         }
     },
     getters: {
+
         // Retorna a quantidade de elementos no carrinho
         count: state => {
             return state.items.length;
         },
+
         // Retorna a soma do preço dos items no carrinho
         total: state => {
             return state.items.length > 0

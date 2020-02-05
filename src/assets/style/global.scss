@@ -1,1 +1,9 @@
-@import "fonts/_fonts.scss";
+@import "fonts/fonts.scss";
+@import "colors/colors";
+
+body {
+
+  #app {
+    background: $primary-background-color;
+  }
+}
